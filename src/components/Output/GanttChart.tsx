@@ -1,8 +1,8 @@
-import { useLayoutEffect, useRef, useState } from 'react';
-import { ganttChartInfoType } from './solve';
-import styled from 'styled-components';
+import { useLayoutEffect, useRef, useState } from "react";
+import { ganttChartInfoType } from "./solve";
+import styled from "styled-components";
 
-import { media } from '../GlobalStyle.css';
+import { media } from "../GlobalStyle.css";
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
 const Title = styled.h2`
   font-weight: 600;
   font-size: 18px;
-  ${media['600']`font-size: 16px;`}
+  ${media["600"]`font-size: 16px;`}
   margin: 0 0 0.5rem 0;
   color: #424242;
 `;
@@ -30,7 +30,7 @@ const Job = styled.div`
   border: 1px solid #8da6ff;
   background-color: #edf4ff;
   color: #424242;
-  ${media['600']`
+  ${media["600"]`
     width: 32px;
     height: 27px;
     font-size: 14px;
@@ -48,7 +48,7 @@ const TimeContainer = styled.div`
 const Time = styled.div`
   width: 40px;
   height: 20px;
-  ${media['600']`
+  ${media["600"]`
     width: 32px;
     height: 21px;
     font-size: 14px;
@@ -91,7 +91,7 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
       job.push(item.job);
       time.push(item.stop);
     } else if (time.slice(-1)[0] !== item.start) {
-      job.push('_', item.job);
+      job.push("_", item.job);
       time.push(item.start, item.stop);
     }
   });
@@ -101,9 +101,9 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
       setWindowWidth(window.innerWidth);
       setContainerWidth(containerEl.current.offsetWidth);
     }
-    window.addEventListener('resize', updateSize);
+    window.addEventListener("resize", updateSize);
     updateSize();
-    return () => window.removeEventListener('resize', updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   let itemWidth = 0;
@@ -130,7 +130,7 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
       break;
     }
   }
-  
+
   // If index of last time item equal to acc
   let lastLineItemCount: number;
   if (time.length - 1 === acc) {
@@ -234,9 +234,11 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
         <>
           <JobContainer>
             {job.map((job, index) => (
-              <Job key={`gc-job-${index}`} className="flex-center">
-                {job}
-              </Job>
+              <Job
+                key={`gc-job-${index}`}
+                className="flex-center"
+                dangerouslySetInnerHTML={{ __html: job }}
+              ></Job>
             ))}
           </JobContainer>
           <TimeContainer>

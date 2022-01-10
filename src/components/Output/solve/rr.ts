@@ -1,4 +1,4 @@
-import { ganttChartInfoType } from './';
+import { ganttChartInfoType } from "./";
 
 export const rr = (
   arrivalTime: number[],
@@ -8,7 +8,8 @@ export const rr = (
   const processesInfo = arrivalTime
     .map((item, index) => {
       return {
-        job: (index + 10).toString(36).toUpperCase(),
+        // job: (index + 10).toString(36).toUpperCase(),
+        job: `P<small>${index}</small>`,
         at: item,
         bt: burstTime[index],
       };
@@ -56,7 +57,7 @@ export const rr = (
       remainingTime[processToExecute.job] -= remainingT;
       const prevCurrentTime = currentTime;
       currentTime += remainingT;
-      
+
       ganttChartInfo.push({
         job: processToExecute.job,
         start: prevCurrentTime,

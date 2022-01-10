@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { media } from '../GlobalStyle.css';
+import { media } from "../GlobalStyle.css";
 
 const TableWrapper = styled.div`
   overflow: auto;
   max-width: 100%;
   margin: 0px auto 20px auto;
-  ${media['600']`
+  ${media["600"]`
   margin: 0px auto 0px auto;
   `}
   background:
@@ -27,20 +27,20 @@ const StyledTable = styled.table`
   border-collapse: collapse;
   border-radius: 10px;
   box-sizing: border-box;
-  ${media['1275']`font-size: 14px;`}
+  ${media["1275"]`font-size: 14px;`}
 
   tr {
     height: 40px;
     line-height: 0;
-    ${media['600']`height: 35px`};
+    ${media["600"]`height: 35px`};
   }
 
   th,
   td {
     text-align: left;
     padding: 15px;
-    ${media['1275']`padding: 12px`};
-    ${media['600']`padding: 8px`};
+    ${media["1275"]`padding: 12px`};
+    ${media["600"]`padding: 8px`};
     border: 1px solid #e1e1e1;
     line-height: 16.1px;
   }
@@ -48,10 +48,10 @@ const StyledTable = styled.table`
 
 const HeaderCell = styled.th`
   font-size: 1rem;
-  ${media['1275']`font-size: 14px;`}
+  ${media["1275"]`font-size: 14px;`}
   font-weight: 500;
   height: 40px;
-  ${media['600']`height: 35px`};
+  ${media["600"]`height: 35px`};
   white-space: nowrap;
   color: #6d7187;
   background-color: #f9f9fb;
@@ -88,7 +88,7 @@ const Table = ({ solvedProcessesInfo }: TableProps) => {
   const averageWAT = totalWAT / numberOfProcesses;
 
   return (
-    <TableWrapper>    
+    <TableWrapper>
       <StyledTable>
         <thead>
           <tr>
@@ -103,7 +103,7 @@ const Table = ({ solvedProcessesInfo }: TableProps) => {
         <tbody>
           {solvedProcessesInfo.map((item, index) => (
             <tr key={`process-row-${item.job}`}>
-              <td>{item.job}</td>
+              <td dangerouslySetInnerHTML={{ __html: item.job }}></td>
               <td>{item.at}</td>
               <td>{item.bt}</td>
               <td>{item.ft}</td>
@@ -113,14 +113,16 @@ const Table = ({ solvedProcessesInfo }: TableProps) => {
           ))}
           {
             <tr>
-              <td colSpan={4} style={{ textAlign: 'right' }}>
+              <td colSpan={4} style={{ textAlign: "right" }}>
                 Average
               </td>
               <td>
-                {totalTAT} / {numberOfProcesses} = {precisionRound(averageTAT, 3)}
+                {totalTAT} / {numberOfProcesses} ={" "}
+                {precisionRound(averageTAT, 3)}
               </td>
               <td>
-                {totalWAT} / {numberOfProcesses} = {precisionRound(averageWAT, 3)}
+                {totalWAT} / {numberOfProcesses} ={" "}
+                {precisionRound(averageWAT, 3)}
               </td>
             </tr>
           }
