@@ -1,22 +1,23 @@
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  experimental: {
-    styledComponents: true
-  },
+  // experimental: {
+  //   styledComponents: true,
+  // },
+  outputStandalone: true,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push(
       {
         test: /\.(png|jpe?g|gif|svg|webp|jp2)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 8192,
-              fallback: 'file-loader',
+              fallback: "file-loader",
               publicPath: `/_next/static/assets/images/`,
-              outputPath: `${isServer ? '../' : ''}static/assets/images/`,
-              name: '[name]-[hash].[ext]',
+              outputPath: `${isServer ? "../" : ""}static/assets/images/`,
+              name: "[name]-[hash].[ext]",
             },
           },
         ],
@@ -25,11 +26,11 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
               publicPath: `/_next/static/assets/fonts/`,
-              outputPath: `${isServer ? '../' : ''}static/assets/fonts/`,
-              name: '[name]-[hash].[ext]',
+              outputPath: `${isServer ? "../" : ""}static/assets/fonts/`,
+              name: "[name]-[hash].[ext]",
             },
           },
         ],
@@ -41,9 +42,9 @@ module.exports = {
   // assetPrefix: isProd ? 'https://boonsuen.com/process-scheduling-solver' : '',
   env: {
     ASSET_PREFIX: isProd
-      ? 'https://boonsuen.com/process-scheduling-solver'
-      : '',
-    BASE: isProd ? '/process-scheduling-solver' : '',
+      ? "https://boonsuen.com/process-scheduling-solver"
+      : "",
+    BASE: isProd ? "/process-scheduling-solver" : "",
   },
-  basePath: isProd ? '/process-scheduling-solver' : '',
+  basePath: isProd ? "/process-scheduling-solver" : "",
 };

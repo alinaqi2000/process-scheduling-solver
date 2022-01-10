@@ -156,9 +156,13 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
                     {Array.from({
                       length: lastLineItemCount - 1,
                     }).map((_, i) => (
-                      <Job key={`gc-job-lastline${i}`} className="flex-center">
-                        {job[jobCounter + 1 + i]}
-                      </Job>
+                      <Job
+                        key={`gc-job-lastline${i}`}
+                        className="flex-center"
+                        dangerouslySetInnerHTML={{
+                          __html: job[jobCounter + 1 + i],
+                        }}
+                      ></Job>
                     ))}
                   </JobContainer>
                   <TimeContainer>
@@ -182,9 +186,13 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
                 <MultilineContainer key={`multiline-container-${ind}`}>
                   <JobContainer>
                     {Array.from({ length: jobCounter + 1 }).map((_, i) => (
-                      <Job key={`gc-job-firstline${i}`} className="flex-center">
-                        {job[i]}
-                      </Job>
+                      <Job
+                        key={`gc-job-firstline${i}`}
+                        className="flex-center"
+                        dangerouslySetInnerHTML={{
+                          __html: job[i],
+                        }}
+                      ></Job>
                     ))}
                   </JobContainer>
                   <TimeContainer>
@@ -211,9 +219,13 @@ const GanttChart = ({ ganttChartInfo }: GanttChartProps) => {
                   <JobContainer>
                     {Array.from({ length: maxTimeItemCount - 1 }).map(
                       (_, i) => (
-                        <Job key={`gc-job-${i}-${ind}`} className="flex-center">
-                          {job[prevJobCounter + i + 1]}
-                        </Job>
+                        <Job
+                          key={`gc-job-${i}-${ind}`}
+                          className="flex-center"
+                          dangerouslySetInnerHTML={{
+                            __html: job[prevJobCounter + i + 1],
+                          }}
+                        ></Job>
                       )
                     )}
                   </JobContainer>

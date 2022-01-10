@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:static": "serve ./out",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "dependencies": {
     "next": "^12.0.7",
@@ -20,6 +22,7 @@
     "@types/react-select": "^4.0.18",
     "@types/styled-components": "^5.1.19",
     "file-loader": "^6.2.0",
+    "serve": "^13.0.2",
     "typescript": "^4.5.4",
     "url-loader": "^4.1.1"
   }
