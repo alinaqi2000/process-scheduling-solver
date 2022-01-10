@@ -44,7 +44,7 @@ module.exports = {
     ASSET_PREFIX: isProd
       ? "https://boonsuen.com/process-scheduling-solver"
       : "",
-    BASE: isProd ? "/process-scheduling-solver" : "",
+    BASE: isProd ? "" : "",
   },
-  basePath: isProd ? "/process-scheduling-solver" : "",
+  basePath: isProd ? "" : "",
 };
