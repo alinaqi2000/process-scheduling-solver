@@ -4,7 +4,7 @@
 [![process-scheduling-solver](https://user-images.githubusercontent.com/19908657/120210473-6874ca00-c262-11eb-96a2-5c4742fea816.png)](https://boonsuen.com/process-scheduling-solver)
 
 
-Get it here: [boonsuen.com/process-scheduling-solver](https://boonsuen.com/process-scheduling-solver)
+Get it here: [algos.ml](https://www.algos.ml)
 
 ## Supported algorithms
 - First Come First Serve / FCFS
